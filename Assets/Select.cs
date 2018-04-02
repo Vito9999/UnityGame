@@ -37,6 +37,15 @@ public class Select : MonoBehaviour {
         print(this.gameObject.name + "  selected: " + rend.enabled);
     }
        
+    public void togglerend(bool dorend)
+    {
+        foreach (GameObject select in objects)
+        {
+            rend = select.gameObject.GetComponent<SpriteRenderer>();
+            rend.enabled = dorend;
+
+        }
+    }
     
    
     
