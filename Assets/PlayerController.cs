@@ -7,13 +7,13 @@ public class PlayerController : MonoBehaviour
 {
 
     private Rigidbody2D Rb2d;
-    
 
+    private Vector3 actpos;
 
     void Start()
     {
         Rb2d = GetComponent<Rigidbody2D>();
-    
+        actpos = this.transform.position;
         
     }
 
@@ -21,10 +21,10 @@ public class PlayerController : MonoBehaviour
     {
         float MoveHorizontal = Input.GetAxis("Horizontal");
         float MoveVertical = Input.GetAxis("Vertical");
-        Vector2 movement = new Vector2(MoveHorizontal, MoveVertical);
-        Rb2d.AddForce(movement * 10);
+        actpos.x += MoveHorizontal;
+        actpos.y += MoveVertical;
+        this.transform.SetPositionAndRotation(actpos, new Quaternion(0, 0, 0, 0));
 
-        
     }
    
     
