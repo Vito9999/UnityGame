@@ -37,7 +37,7 @@ public class Select : MonoBehaviour {
         print(this.gameObject.name + "  selected: " + rend.enabled);
     }
        
-    public void togglerend(bool dorend)
+  /*  public void togglerend(bool dorend)
     {
         foreach (GameObject select in objects)
         {
@@ -45,7 +45,7 @@ public class Select : MonoBehaviour {
             rend.enabled = dorend;
 
         }
-    }
+    }*/
     
    
     
