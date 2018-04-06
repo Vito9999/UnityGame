@@ -5,39 +5,39 @@ using UnityEngine;
 public class EnemyStats : MonoBehaviour {
 
 
-    public class EnemyStaatsLV1
+    public class Stats
     {
-        public int life;
-        public string name;
-        public int basicattack;
+       public string name;
+       public int life;
+       public  int basicattack;
     }
-    public List<GameObject> enemys;
-    public Transform[] aa;
+
+   /* Attack s1 = new Attack();
+    GameObject h;
+
+    void Start () {
+    h = GameObject.Find("EnemyLv1Holder");
+    s1.Addenemy(h);}
+    */   
     
-    
+    int b = 0, c = 0;
 
-	// Use this for initialization
-	void Start () {
-        for (int i = 0; i < enemys.Capacity; i++)
-        {
-            aa[i] = this.transform.GetChild(i);
+    // Use this for initialization
+    void Start () {
+        
+        
+        
+    }
 
-        }
 
-        foreach (var enemy in enemys)
-        {
-            int i = 0;
-            var a = Vector3.Distance(this.transform.position, enemy.transform.GetChild(i).position);
-            i++;
-            if (a < 3f)
-            {
-                print(enemy.name);
-            }
-        }
-	}
-	
+ 
 	// Update is called once per frame
 	void Update () {
-		
-	}
+
+    
+        }
+
+
+
+    }
 }

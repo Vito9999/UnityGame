@@ -18,17 +18,29 @@ public class Attack : MonoBehaviour {
     //        }
     //}
 
-    public List<GameObject> enemys;
+    public List<GameObject> enemys = new List<GameObject>();
+    
+    
    // public int[] a = new int[10];
    // public Transform[] aa;
 
 
     //Player myplayer = new Player(false, 100);
     public int c = 0, b = 0;
-
-    private void Start()
+    
+    public void Addenemy(GameObject currentEnemy)
     {
-        print(enemys.Capacity.ToString());
+        
+        print(currentEnemy.name + "/////3333333");
+        enemys.Add(currentEnemy);
+    }
+
+    
+     void Start()
+    {
+        
+        Addenemy(GameObject.Find("EnemyLv1Holder"));
+        print(enemys.Count);
         for (int i = 0; i < enemys.Capacity; i++)
         {
 
@@ -38,7 +50,7 @@ public class Attack : MonoBehaviour {
                
                 var ab = enemy.transform.GetChild(0).name;
                 
-                print(ab.ToString());
+                print(ab.ToString() + "----------");
                 
             }
          
@@ -49,7 +61,7 @@ public class Attack : MonoBehaviour {
 
         //print(myplayer.hit.ToString() + "  life: " + myplayer.life.ToString());
     }
-
+   
     // Update is called once per frame
     void Update () {
         
@@ -74,35 +86,39 @@ public class Attack : MonoBehaviour {
 
         }
 
-        
+
 
         
-        foreach (var enemy in enemys)
-        {
+        
+            foreach (var enemy in enemys)
+            {
 
-            
-            if (c == enemy.transform.GetChild(b).childCount)
-            {
-                c = 0;
-                b++;
+
+                if (c == enemy.transform.GetChild(b).childCount)
+                {
+                    c = 0;
+                    b++;
+                }
+                if (b == enemy.transform.childCount)
+                {
+                    b = 0;
+                    
+                }
+
+
+                string ab = enemy.transform.GetChild(b).GetChild(c).name;
+                print(ab.ToString());
+
+                float a = Vector3.Distance(this.transform.position, enemy.transform.GetChild(b).GetChild(c).position);
+
+
+                if (a < 3f)
+                {
+                    print("!!!!!!!!!!" + enemy.transform.GetChild(b).GetChild(c).name);
+                }
+                c++;
             }
-            if (b == enemy.transform.childCount)
-            {
-                b = 0;
-            }
-            
-            
-            var ab = enemy.transform.GetChild(b).GetChild(c).name;
-            print(ab.ToString());
-            var a = Vector3.Distance(this.transform.position, enemy.transform.GetChild(b).GetChild(c).position);
-            
-            
-           if (a < 3f)
-            {
-                print("!!!!!!!!!!" + enemy.transform.GetChild(b).GetChild(c).name);
-            }
-            c++;
-        }
+        
     }
 
     //private void OnTriggerEnter2D(Collider2D collision)
