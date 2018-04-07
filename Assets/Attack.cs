@@ -10,7 +10,8 @@ public class Attack : MonoBehaviour {
     
 
     public List<GameObject> enemys = new List<GameObject>();
-    
+    public List<GameObject> selectedEnemys = new List<GameObject>();
+    string a; bool r = false;
 
     public int c = 0,c1 = 0, b = 0, b1 = 0;
     
@@ -20,9 +21,22 @@ public class Attack : MonoBehaviour {
         print(currentEnemy.name + "/////3333333");
         enemys.Add(currentEnemy);
     }
+    public void Addenemy1(GameObject currentEnemy)
+    {
 
-    
-     void Start()
+        print(currentEnemy.name + "?????????");
+        selectedEnemys.Add(currentEnemy);
+    }
+    public void RemoveEnemy1(GameObject currentEnemy)
+    {
+
+      //  print(currentEnemy.name + "?????????");
+        selectedEnemys.Remove(currentEnemy);
+    }
+
+
+
+    void Start()
     {
         
         Addenemy(GameObject.Find("EnemyLv1Holder"));
@@ -66,22 +80,37 @@ public class Attack : MonoBehaviour {
                     b1 = 0;
 
                 }
+            r = false;
+            a = enemy.transform.GetChild(b1).GetChild(c1).name;
+            if (Vector3.Distance(this.transform.position, enemy.transform.GetChild(b1).GetChild(c1).transform.position) < 4f)
+            {
+                enemy.transform.GetChild(b1).GetChild(c1).GetComponent<Select>().togglerend(true);
 
-                if (Vector3.Distance(this.transform.position, enemy.transform.GetChild(b1).GetChild(c1).transform.position) < 4f)
+                
+                print(a);
+                for (int i = 0; i < selectedEnemys.Count; i++)
                 {
-                    enemy.transform.GetChild(b1).GetChild(c1).GetComponent<Select>().togglerend(true);
-                if (Input.GetKeyDown(KeyCode.Alpha1)  )//Attack
+                    if (selectedEnemys[i].name == a)
+                    {
+                        r = true;
+                    }
+                }
+                if (r == false)
                 {
-                   print( enemy.transform.GetChild(b1).GetChild(c1).GetComponent<WarriorStats>().wa.life);
+                    Addenemy1(GameObject.Find(a));
+                }
+                if (Input.GetKeyDown(KeyCode.Alpha1))//Attack
+                {
+                    enemy.transform.GetChild(b1).GetChild(c1).GetComponent<WarriorStats>().life--;
                 }
 
 
 
             }
-            else { enemy.transform.GetChild(b1).GetChild(c1).GetComponent<Select>().togglerend(false); }
+            else { enemy.transform.GetChild(b1).GetChild(c1).GetComponent<Select>().togglerend(false);  RemoveEnemy1(GameObject.Find(a)); }
                 //enemy.transform.GetChild(b1).GetChild(c1).GetComponent<Select>().togglerend((Vector3.Distance(this.transform.position, enemy.transform.GetChild(b1).GetChild(c1).transform.position) < 4f));
 
-                c1++;
+                 c1++;
             }
 
         

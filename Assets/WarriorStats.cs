@@ -7,12 +7,14 @@ public class WarriorStats : MonoBehaviour {
 
     public GameObject enemy;
     public WarriorLV1Stats wa;
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    public int life;
+
+    void Start ()
     {
         wa = enemy.GetComponent<WarriorLV1Stats>();
         string IngameName = wa.IngameName;
-        int life = wa.life;
+        life = wa.life;
         int basicattack = wa.basicattack;
         int wut = wa.wut;
         
