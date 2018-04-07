@@ -722,8 +722,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemys: []
-  selectedEnemys:
-  - {fileID: 1705381710}
+  selectedEnemys: []
   c: 0
   c1: 0
   b: 0

@@ -38,7 +38,7 @@ public class Attack : MonoBehaviour {
 
     void Start()
     {
-        
+       
         Addenemy(GameObject.Find("EnemyLv1Holder"));
         print(enemys.Count);
         for (int i = 0; i < enemys.Capacity; i++)
@@ -80,13 +80,16 @@ public class Attack : MonoBehaviour {
                     b1 = 0;
 
                 }
+           // print(enemy.transform.GetChild(b1).GetChild(c1).GetComponent<Select>().selected + "1234");
             r = false;
             a = enemy.transform.GetChild(b1).GetChild(c1).name;
             if (Vector3.Distance(this.transform.position, enemy.transform.GetChild(b1).GetChild(c1).transform.position) < 4f)
             {
                 enemy.transform.GetChild(b1).GetChild(c1).GetComponent<Select>().togglerend(true);
 
-                
+                if (enemy.transform.GetChild(b1).GetChild(c1).GetComponent<Select>().selected == false)
+                { RemoveEnemy1(GameObject.Find(a)); }
+
                 print(a);
                 for (int i = 0; i < selectedEnemys.Count; i++)
                 {
@@ -95,7 +98,7 @@ public class Attack : MonoBehaviour {
                         r = true;
                     }
                 }
-                if (r == false)
+                if (r == false && enemy.transform.GetChild(b1).GetChild(c1).GetComponent<Select>().selected == true)
                 {
                     Addenemy1(GameObject.Find(a));
                 }
@@ -107,7 +110,10 @@ public class Attack : MonoBehaviour {
 
 
             }
-            else { enemy.transform.GetChild(b1).GetChild(c1).GetComponent<Select>().togglerend(false);  RemoveEnemy1(GameObject.Find(a)); }
+            else { enemy.transform.GetChild(b1).GetChild(c1).GetComponent<Select>().togglerend(false);
+               
+                RemoveEnemy1(GameObject.Find(a)); }
+
                 //enemy.transform.GetChild(b1).GetChild(c1).GetComponent<Select>().togglerend((Vector3.Distance(this.transform.position, enemy.transform.GetChild(b1).GetChild(c1).transform.position) < 4f));
 
                  c1++;
