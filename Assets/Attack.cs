@@ -7,26 +7,12 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour {
 
-    //public class Player
-    //{
-    //    public bool hit;
-    //    public int life;
-    //    public Player(bool n_hit, int n_life)
-    //        {
-    //        hit = n_hit;
-    //        life = n_life;
-    //        }
-    //}
+    
 
     public List<GameObject> enemys = new List<GameObject>();
     
-    
-   // public int[] a = new int[10];
-   // public Transform[] aa;
 
-
-    //Player myplayer = new Player(false, 100);
-    public int c = 0, b = 0;
+    public int c = 0,c1 = 0, b = 0, b1 = 0;
     
     public void Addenemy(GameObject currentEnemy)
     {
@@ -59,21 +45,47 @@ public class Attack : MonoBehaviour {
         }
 
 
-        //print(myplayer.hit.ToString() + "  life: " + myplayer.life.ToString());
     }
    
-    // Update is called once per frame
+
     void Update () {
+
         
-        if (Input.GetKeyDown(KeyCode.Alpha1))//Attack
-        {
+        
+
             foreach (var enemy in enemys)
             {
-                // enemy.GetComponent<Select>().togglerend(!(Vector3.Distance(this.transform.position, enemy.transform.position) > 3.5f));
-               
+
+                if (c1 == enemy.transform.GetChild(b1).childCount)
+                {
+                    c1 = 0;
+                    b1++;
+                }
+                if (b1 == enemy.transform.childCount)
+                {
+                    b1 = 0;
+
+                }
+
+                if (Vector3.Distance(this.transform.position, enemy.transform.GetChild(b1).GetChild(c1).transform.position) < 4f)
+                {
+                    enemy.transform.GetChild(b1).GetChild(c1).GetComponent<Select>().togglerend(true);
+                if (Input.GetKeyDown(KeyCode.Alpha1)  )//Attack
+                {
+                   print( enemy.transform.GetChild(b1).GetChild(c1).GetComponent<WarriorStats>().wa.life);
+                }
+
+
 
             }
-            
+            else { enemy.transform.GetChild(b1).GetChild(c1).GetComponent<Select>().togglerend(false); }
+                //enemy.transform.GetChild(b1).GetChild(c1).GetComponent<Select>().togglerend((Vector3.Distance(this.transform.position, enemy.transform.GetChild(b1).GetChild(c1).transform.position) < 4f));
+
+                c1++;
+            }
+
+        
+
 
             //if (myplayer.hit == true)
             //{
@@ -84,7 +96,7 @@ public class Attack : MonoBehaviour {
             //    print("no damage");
             //}
 
-        }
+        
 
 
 

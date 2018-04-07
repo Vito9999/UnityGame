@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyStats : MonoBehaviour {
+public class WarriorLV1Stats : MonoBehaviour {
 
 
-    public class Stats
-    {
-       public string name;
-       public int life;
-       public  int basicattack;
-    }
+    
+    
+       public string IngameName = "Warrior";
+       public int life = 200;
+       public int basicattack = 100;
+       public int wut = 100;
+    
 
    /* Attack s1 = new Attack();
     GameObject h;
@@ -20,7 +21,7 @@ public class EnemyStats : MonoBehaviour {
     s1.Addenemy(h);}
     */   
     
-    int b = 0, c = 0;
+   
 
     // Use this for initialization
     void Start () {
@@ -39,5 +40,5 @@ public class EnemyStats : MonoBehaviour {
 
 
 
-    }
+    
 }
