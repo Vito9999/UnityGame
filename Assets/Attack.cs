@@ -39,7 +39,7 @@ public class Attack : MonoBehaviour {
     void Start()
     {
        
-        Addenemy(GameObject.Find("EnemyLv1Holder"));
+        Addenemy(GameObject.Find("EnemyWorld1Holder"));
         print(enemys.Count);
         for (int i = 0; i < enemys.Capacity; i++)
         {
@@ -80,7 +80,9 @@ public class Attack : MonoBehaviour {
                     b1 = 0;
 
                 }
-           // print(enemy.transform.GetChild(b1).GetChild(c1).GetComponent<Select>().selected + "1234");
+
+           // print(enemy.transform.GetChild(b1).GetChild(c1).GetChild(0).GetComponent<SpriteRenderer>().sprite.name + "   1234");
+
             r = false;
             a = enemy.transform.GetChild(b1).GetChild(c1).name;
             if (Vector3.Distance(this.transform.position, enemy.transform.GetChild(b1).GetChild(c1).transform.position) < 4f)
@@ -104,7 +106,8 @@ public class Attack : MonoBehaviour {
                 }
                 if (Input.GetKeyDown(KeyCode.Alpha1))//Attack
                 {
-                    enemy.transform.GetChild(b1).GetChild(c1).GetComponent<WarriorStats>().life--;
+
+                   // enemy.transform.GetChild(b1).GetChild(c1).GetComponent<WarriorStats>().life--;
                 }
 
 
