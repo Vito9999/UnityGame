@@ -269,8 +269,8 @@ GameObject:
   - component: {fileID: 635435234}
   - component: {fileID: 635435238}
   - component: {fileID: 635435237}
-  - component: {fileID: 635435236}
   - component: {fileID: 635435235}
+  - component: {fileID: 635435236}
   m_Layer: 0
   m_Name: MageLV1
   m_TagString: Untagged
@@ -300,11 +300,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 635435233}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ea2bfb452c53f5408429e108a298d28, type: 3}
+  m_Script: {fileID: 11500000, guid: b8bcf5d9cf41e1b42af54bd67cfa9101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 963283023}
-  wa: {fileID: 0}
+  PhysicDamageReduction: 0
+  MagicDamageReduction: 0.1
+  IngameName: 
+  life: 0
+  mana: 0
+  basicattack: 0
+  wut: 0
+  MagicArmor: 0
+  PhysicArmor: 0
 --- !u!114 &635435236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,7 +328,6 @@ MonoBehaviour:
   sprites:
   - {fileID: 21300000, guid: d58595a909823c942900a2a53d418285, type: 3}
   - {fileID: 21300000, guid: 545068d1f5fae8e4ab1aab8fc6ae43de, type: 3}
-  inRange: 0
   selected: 0
 --- !u!58 &635435237
 CircleCollider2D:
@@ -420,13 +426,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 963283023}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 153815c6078e2b3419a43253796ab6a4, type: 3}
+  m_Script: {fileID: 11500000, guid: 66b31206d490bc044aa2ac79b12dd57f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IngameName: Mage
-  life: 100
-  basicattack: 10
-  mana: 1000
+  IngameName: 
+  life: 0
+  mana: 0
+  basicattack: 0
+  MagicDamageReduction: 0
+  PhysicDamageReduction: 0
+  MagicArmor: 0
+  PhysicArmor: 0
 --- !u!1 &1137517588
 GameObject:
   m_ObjectHideFlags: 0
@@ -546,6 +556,10 @@ MonoBehaviour:
   life: 0
   wut: 0
   basicattack: 0
+  MagicDamageReduction: 0
+  PhysicDamageReduction: 0
+  MagicArmor: 0
+  PhysicArmor: 0
 --- !u!1 &1529634010
 GameObject:
   m_ObjectHideFlags: 0
@@ -559,7 +573,7 @@ GameObject:
   - component: {fileID: 1529634014}
   - component: {fileID: 1529634015}
   m_Layer: 0
-  m_Name: UFO
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -704,11 +718,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8bcf5d9cf41e1b42af54bd67cfa9101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WarriorLV1: {fileID: 0}
+  PhysicDamageReduction: 0
+  MagicDamageReduction: 0.1
   IngameName: 
   life: 0
-  wut: 0
+  mana: 0
   basicattack: 0
+  wut: 0
+  MagicArmor: 0
+  PhysicArmor: 0
 --- !u!114 &1674182964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -725,7 +743,6 @@ MonoBehaviour:
   sprites:
   - {fileID: 21300000, guid: d58595a909823c942900a2a53d418285, type: 3}
   - {fileID: 21300000, guid: 545068d1f5fae8e4ab1aab8fc6ae43de, type: 3}
-  inRange: 0
   selected: 0
 --- !u!58 &1674182965
 CircleCollider2D:
@@ -1076,7 +1093,6 @@ MonoBehaviour:
   sprites:
   - {fileID: 21300000, guid: d58595a909823c942900a2a53d418285, type: 3}
   - {fileID: 21300000, guid: 545068d1f5fae8e4ab1aab8fc6ae43de, type: 3}
-  inRange: 0
   selected: 0
 --- !u!58 &2082343924
 CircleCollider2D:
@@ -1104,8 +1120,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8bcf5d9cf41e1b42af54bd67cfa9101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WarriorLV1: {fileID: 0}
+  PhysicDamageReduction: 0
+  MagicDamageReduction: 0.1
   IngameName: 
   life: 0
-  wut: 0
+  mana: 0
   basicattack: 0
+  wut: 0
+  MagicArmor: 0
+  PhysicArmor: 0
