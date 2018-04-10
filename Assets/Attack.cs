@@ -7,184 +7,73 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour {
 
-    
 
-    public List<GameObject> enemys = new List<GameObject>();
-    public List<GameObject> selectedEnemys = new List<GameObject>();
-    string a; bool r = false;
-
-    public int c = 0,c1 = 0, b = 0, b1 = 0;
+    float PlayerRadius;
+    public float AttackRange = 4f;
     
-    public void Addenemy(GameObject currentEnemy)
+    public void HitArea(Vector2 center, float radius)
     {
         
-        print(currentEnemy.name + "/////3333333");
-        enemys.Add(currentEnemy);
-    }
-    public void Addenemy1(GameObject currentEnemy)
-    {
-
-        print(currentEnemy.name + "?????????");
-        selectedEnemys.Add(currentEnemy);
-    }
-    public void RemoveEnemy1(GameObject currentEnemy)
-    {
-
-      //  print(currentEnemy.name + "?????????");
-        selectedEnemys.Remove(currentEnemy);
-    }
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(center, radius);
+        int damage = 60;
+        int selected1 = 0;
 
 
-
-    void Start()
-    {
-       
-        Addenemy(GameObject.Find("EnemyWorld1Holder"));
-        print(enemys.Count);
-        for (int i = 0; i < enemys.Capacity; i++)
+        GameObject enemys = GameObject.Find("EnemyWorld1Holder");
+        for (int i = 0; i < enemys.transform.childCount; i++)
         {
 
-
-            foreach (var enemy in enemys)
+            for (int i1 = 0; i1 < enemys.transform.GetChild(i).childCount; i1++)
             {
-               
-                var ab = enemy.transform.GetChild(0).name;
-                
-                print(ab.ToString() + "----------");
-                
+
+                Select Select = enemys.transform.GetChild(i).GetChild(i1).GetComponent<Select>();
+                Select.togglerend(false);
             }
-         
-           
-
         }
-
-
-    }
-   
-
-    void Update () {
-
-        
-        
-
-            foreach (var enemy in enemys)
+        for (int i = 0; i < hitColliders.Length; i++)
             {
 
-                if (c1 == enemy.transform.GetChild(b1).childCount)
+                string a = hitColliders[i].name;
+                GameObject enemystats = GameObject.Find(a);
+                Select Select = enemystats.GetComponent<Select>();
+                if (enemystats.GetComponent<Select>().selected == true)
                 {
-                    c1 = 0;
-                    b1++;
+                    Select.togglerend(true);
+                    selected1++;
                 }
-                if (b1 == enemy.transform.childCount)
-                {
-                    b1 = 0;
-
-                }
-
-           // print(enemy.transform.GetChild(b1).GetChild(c1).GetChild(0).GetComponent<SpriteRenderer>().sprite.name + "   1234");
-
-            r = false;
-            a = enemy.transform.GetChild(b1).GetChild(c1).name;
-            if (Vector3.Distance(this.transform.position, enemy.transform.GetChild(b1).GetChild(c1).transform.position) < 4f)
+            }
+            if (selected1 > 0 && Input.GetKeyDown(KeyCode.Alpha1))
             {
-                enemy.transform.GetChild(b1).GetChild(c1).GetComponent<Select>().togglerend(true);
-
-                if (enemy.transform.GetChild(b1).GetChild(c1).GetComponent<Select>().selected == false)
-                { RemoveEnemy1(GameObject.Find(a)); }
-
-                print(a);
-                for (int i = 0; i < selectedEnemys.Count; i++)
+                for (int i = 0; i < hitColliders.Length; i++)
                 {
-                    if (selectedEnemys[i].name == a)
+                    string a = hitColliders[i].name;
+                    GameObject enemystats = GameObject.Find(a);
+                    if (enemystats.GetComponent<Select>().selected == true)
                     {
-                        r = true;
+                        Stats enemy = enemystats.GetComponent<Stats>();
+                        enemy.life -= damage / selected1;
                     }
                 }
-                if (r == false && enemy.transform.GetChild(b1).GetChild(c1).GetComponent<Select>().selected == true)
-                {
-                    Addenemy1(GameObject.Find(a));
-                }
-                if (Input.GetKeyDown(KeyCode.Alpha1))//Attack
-                {
-
-                   // enemy.transform.GetChild(b1).GetChild(c1).GetComponent<WarriorStats>().life--;
-                }
-
-
-
-            }
-            else { enemy.transform.GetChild(b1).GetChild(c1).GetComponent<Select>().togglerend(false);
-               
-                RemoveEnemy1(GameObject.Find(a)); }
-
-                //enemy.transform.GetChild(b1).GetChild(c1).GetComponent<Select>().togglerend((Vector3.Distance(this.transform.position, enemy.transform.GetChild(b1).GetChild(c1).transform.position) < 4f));
-
-                 c1++;
-            }
-
-        
-
-
-            //if (myplayer.hit == true)
-            //{
-            //    myplayer.life -= 1;
-            //    print(myplayer.life.ToString());
-            //}else
-            //{
-            //    print("no damage");
-            //}
-
-        
-
-
-
-        
-        
-            foreach (var enemy in enemys)
-            {
-
-
-                if (c == enemy.transform.GetChild(b).childCount)
-                {
-                    c = 0;
-                    b++;
-                }
-                if (b == enemy.transform.childCount)
-                {
-                    b = 0;
-                    
-                }
-
-
-                string ab = enemy.transform.GetChild(b).GetChild(c).name;
-                print(ab.ToString());
-
-                float a = Vector3.Distance(this.transform.position, enemy.transform.GetChild(b).GetChild(c).position);
-
-
-                if (a < 3f)
-                {
-                    print("!!!!!!!!!!" + enemy.transform.GetChild(b).GetChild(c).name);
-                }
-                c++;
             }
         
     }
 
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if(collision.tag =="enemie1")
-    //    {
-    //        myplayer.hit = true;
-    //        print("in collision" + myplayer.hit.ToString());
-    //    }
-    //}
-    //private void OnTriggerExit2D(Collider2D collision)
-    //{
-    //    if(collision.tag == "enemie1")
-    //    {
-    //        myplayer.hit = false;
-    //        print("in collusion" + myplayer.hit.ToString());
-    //    }
-    //}
+
+
+     void Start()
+    {
+        PlayerRadius = this.transform.GetComponent<CircleCollider2D>().radius;
+    }
+     void Update()
+    {
+        HitArea(this.transform.position, PlayerRadius + AttackRange);
+    }
+
+
+
+
+
+
+
+
 }

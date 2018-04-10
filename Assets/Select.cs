@@ -7,6 +7,7 @@ public class Select : MonoBehaviour {
     public GameObject[] objects;
     SpriteRenderer rend;
     public Sprite[] sprites;
+    public bool inRange = false;
     /*public class enemie
     {
       

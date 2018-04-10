@@ -6,16 +6,22 @@ public class Stats : MonoBehaviour
 {
     GameObject a;
     GameObject ThisObjectsName;
-    public WarriorLV1StatsHolder Warrior;
+    public WarriorLV1StatsHolder WarriorLV1;
+
     public string IngameName;
+    public int life;
+    public int wut;
+    public int basicattack;
 
-
-    void WarriorLV1()
+    void InitWarriorLV1()
     { 
 
         ThisObjectsName = GameObject.Find("WarriorLV1Holder");
-        Warrior = ThisObjectsName.GetComponent<WarriorLV1StatsHolder>();
-        IngameName = Warrior.IngameName;
+        WarriorLV1 = ThisObjectsName.GetComponent<WarriorLV1StatsHolder>();
+        IngameName = WarriorLV1.IngameName;
+        life = WarriorLV1.life;
+        wut = WarriorLV1.wut;
+        basicattack = WarriorLV1.basicattack;
     }
 
 
@@ -23,7 +29,7 @@ public class Stats : MonoBehaviour
     {
        if(this.transform.parent.name == "WarriorLV1Holder")
         {
-            WarriorLV1();
+            InitWarriorLV1();
         }
        
     }
