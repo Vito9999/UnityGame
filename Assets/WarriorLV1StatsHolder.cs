@@ -10,7 +10,11 @@ public class WarriorLV1StatsHolder : MonoBehaviour {
     public int life;
     public int wut;
     public int basicattack;
-    
+    public float MagicDamageReduction;
+    public float PhysicDamageReduction;
+    public int MagicArmor;
+    public int PhysicArmor;
+
     void Start ()
     {
 
@@ -18,5 +22,9 @@ public class WarriorLV1StatsHolder : MonoBehaviour {
         life = 2000;
         wut = 500;
         basicattack = 100;
+        MagicDamageReduction = 0.9f;
+        PhysicDamageReduction = 0.75f;
+        MagicArmor = 50;
+        PhysicArmor = 100;
     }
 }

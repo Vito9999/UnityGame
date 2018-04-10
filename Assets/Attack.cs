@@ -5,19 +5,17 @@ using UnityEngine;
 
  
 
-public class Attack : MonoBehaviour {
+public class Attack : MonoBehaviour { // Armor Reduce Art = Physic
 
-
+    
     float PlayerRadius;
     public float AttackRange = 4f;
-    
-    public void HitArea(Vector2 center, float radius)
-    {
-        
-        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(center, radius);
-        int damage = 60;
-        int selected1 = 0;
 
+    public void HitArea(Vector2 center, float radius) //, int layerMask)
+    {
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(center, radius);
+        int selected1 = 0;
+        int PhysicArmorReduce = 90;//--------------ArmorReduce
 
         GameObject enemys = GameObject.Find("EnemyWorld1Holder");
         for (int i = 0; i < enemys.transform.childCount; i++)
@@ -51,7 +49,15 @@ public class Attack : MonoBehaviour {
                     if (enemystats.GetComponent<Select>().selected == true)
                     {
                         Stats enemy = enemystats.GetComponent<Stats>();
-                        enemy.life -= damage / selected1;
+                        
+                    if(enemy.PhysicArmor - Mathf.RoundToInt(PhysicArmorReduce / selected1) <= 0)
+                    {
+                        enemy.PhysicArmor = 0;
+                    }
+                    else
+                    {
+                        enemy.PhysicArmor -= Mathf.RoundToInt(PhysicArmorReduce / selected1);
+                    }
                     }
                 }
             }
@@ -64,9 +70,9 @@ public class Attack : MonoBehaviour {
     {
         PlayerRadius = this.transform.GetComponent<CircleCollider2D>().radius;
     }
-     void Update()
+     void FixedUpdate()
     {
-        HitArea(this.transform.position, PlayerRadius + AttackRange);
+        HitArea(this.transform.position, PlayerRadius + AttackRange); 
     }
 
 

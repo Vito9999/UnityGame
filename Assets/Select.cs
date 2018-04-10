@@ -7,26 +7,20 @@ public class Select : MonoBehaviour {
     public GameObject[] objects;
     SpriteRenderer rend;
     public Sprite[] sprites;
-    public bool inRange = false;
-    /*public class enemie
-    {
-      
-    }
-    enemie E1 = new enemie();*/
-    private void Start()
+ 
+    void Start()
     {
 
         
         foreach (GameObject select in objects)
         {
-            rend = select.gameObject.GetComponent<SpriteRenderer>();
+            rend = select.GetComponent<SpriteRenderer>();
             rend.enabled = false;
             print(this.gameObject.name + "  selected: " + rend.enabled);
         }
     }
 
     public bool selected = false;
-    // Update is called once per frame
     public void OnMouseDown ()
     {
         selected = !selected;
@@ -34,24 +28,12 @@ public class Select : MonoBehaviour {
         foreach (GameObject select in objects)
         {
             if (select.name == "select")
-            {
-               
-                rend.enabled = !rend.enabled;
-                rend.sprite = sprites[0];
-               
+            { 
+                rend.enabled = !rend.enabled;        
             }
-         
-            
-
         }
-        print(this.gameObject.name + "  selected: " + selected);
-        
-        
-            
-        
+        print(this.gameObject.name + "  selected: " + selected);  
     }
-
-   
 
 
     public void togglerend(bool dorend)
@@ -63,7 +45,7 @@ public class Select : MonoBehaviour {
                 if (select.name == "select")
                 {
                    
-                    rend.sprite = sprites[1];
+                    rend.sprite = sprites[1]; //if gameobject is selected and is in the AttackArea
                     rend.enabled = dorend;
                 }
 
@@ -76,7 +58,7 @@ public class Select : MonoBehaviour {
             }
             if(selected == true)
             {
-                rend.sprite = sprites[0];
+                rend.sprite = sprites[0]; // if gameobject is selected but isn't in the AttackArea
             }
             
             
