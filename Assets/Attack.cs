@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
  
 
@@ -10,13 +10,15 @@ public class Attack : MonoBehaviour { // Armor Reduce Art = Physic
     
     float PlayerRadius;
     public float AttackRange = 4f;
-
+    public float cooldown = 5f;
+    public Image Image;
+    
     public void HitArea(Vector2 center, float radius) //, int layerMask)
     {
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(center, radius);
         int selected1 = 0;
         int PhysicArmorReduce = 90;//--------------ArmorReduce
-
+        int PhysicDamage = 200;
         GameObject enemys = GameObject.Find("EnemyWorld1Holder");
         for (int i = 0; i < enemys.transform.childCount; i++)
         {
@@ -40,7 +42,7 @@ public class Attack : MonoBehaviour { // Armor Reduce Art = Physic
                     selected1++;
                 }
             }
-            if (selected1 > 0 && Input.GetKeyDown(KeyCode.Alpha1))
+        if (selected1 > 0 && Input.GetKeyDown(KeyCode.Alpha1)) 
             {
                 for (int i = 0; i < hitColliders.Length; i++)
                 {
@@ -58,6 +60,7 @@ public class Attack : MonoBehaviour { // Armor Reduce Art = Physic
                     {
                         enemy.PhysicArmor -= Mathf.RoundToInt(PhysicArmorReduce / selected1);
                     }
+                    enemy.life -= Mathf.RoundToInt(((PhysicDamage - enemy.PhysicArmor)*enemy.PhysicDamageReduction));
                     }
                 }
             }
@@ -67,8 +70,9 @@ public class Attack : MonoBehaviour { // Armor Reduce Art = Physic
 
 
      void Start()
-    {
+    {   
         PlayerRadius = this.transform.GetComponent<CircleCollider2D>().radius;
+
     }
      void FixedUpdate()
     {

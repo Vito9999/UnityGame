@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Stats : MonoBehaviour
 {
+  
     GameObject EnemyHolder;
     WarriorLV1StatsHolder WarriorLV1;
     MageLV1StatsHolder MageLV1;
