@@ -13,16 +13,20 @@ public class SkillCoolDown : MonoBehaviour {
     
     void FixedUpdate()
     {
-        for (int i = 0; i < skills.Count; i++)
-        {
+        
             if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+            for (int i = 0; i < skills.Count; i++)
             {
                 if (skills[i].currentCooldown >= skills[i].cooldown)
                 {
                     skills[i].currentCooldown = 0;
                 }
             }
+            }
             if(Input.GetKeyDown(KeyCode.Alpha2))
+            {
+            for (int i = 0; i < skills.Count; i++)
             {
                 if (skills[i].currentCooldown >= skills[i].cooldown)
                 {
@@ -30,6 +34,7 @@ public class SkillCoolDown : MonoBehaviour {
                 }
             }
         }
+        
 
     }
     void Update()

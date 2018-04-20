@@ -498,7 +498,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PhysicDamageReduction: 0
-  MagicDamageReduction: 0.1
+  MagicDamageReduction: 0
   IngameName: 
   life: 0
   mana: 0
@@ -1077,7 +1077,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PhysicDamageReduction: 0
-  MagicDamageReduction: 0.1
+  MagicDamageReduction: 0
   IngameName: 
   life: 0
   mana: 0
@@ -1541,7 +1541,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PhysicDamageReduction: 0
-  MagicDamageReduction: 0.1
+  MagicDamageReduction: 0
   IngameName: 
   life: 0
   mana: 0

@@ -22,7 +22,7 @@ public class Attack : MonoBehaviour { // Armor Reduce Art = Physic
         GameObject enemys = GameObject.Find("EnemyWorld1Holder");
         for (int i = 0; i < enemys.transform.childCount; i++)
         {
-
+                
             for (int i1 = 0; i1 < enemys.transform.GetChild(i).childCount; i1++)
             {
 
